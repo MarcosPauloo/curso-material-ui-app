@@ -15,7 +15,7 @@ export const AppRoutes = ()=>{
                 path: '/pagina-inicial',
             }
         ])
-    }, [])
+    }, []);
 
     return (
         <Routes>
