@@ -57,6 +57,7 @@ export const FerramentasDeDetalhes: React.FC<IFerramentasDeDetalhesProps> = ({
             component={Paper}
             height={theme.spacing(5)}
         >
+            
             {(mostrarBotaoSalvar && !mostrarBotaoSalvarCarregando) && (<Button
                 color='primary'
                 disableElevation
