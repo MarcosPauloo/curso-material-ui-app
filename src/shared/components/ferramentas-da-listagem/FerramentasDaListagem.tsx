@@ -1,7 +1,7 @@
 import {Box, TextField, Button, Paper, Icon, InputAdornment} from '@mui/material'
 import { useTheme } from '@mui/material/styles';
 
-interface IBarraDeFerramentasProps{
+interface IFerramentasDaListagemProps{
     children?: React.ReactNode;
     textoDaBusca?: string;
     mostrarInputBusca?: boolean;
@@ -11,7 +11,7 @@ interface IBarraDeFerramentasProps{
     aoClicarEmNovo?: () => void;
 }
 
-export const BarraDeFerramentas: React.FC<IBarraDeFerramentasProps> = ({
+export const FerramentasDaListagem: React.FC<IFerramentasDaListagemProps> = ({
     textoDaBusca='', mostrarInputBusca= false, aoMudarTextoDeBusca, textoBotaoNovo="Novo", mostrarBotaoNovo=true, aoClicarEmNovo
 }) =>{
     const theme = useTheme();
