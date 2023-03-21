@@ -1,15 +1,22 @@
 import { useMemo, useEffect } from "react";
 import { useSearchParams } from "react-router-dom"
 import { FerramentasDaListagem } from "../../shared/components"
+import { useDebounce } from "../../shared/hooks";
 import { LayoutBaseDePagina } from "../../shared/layouts"
 import { PessoasService } from "../../shared/services/api/pessoas/PessoasService";
 
 
 export const ListagemDePessoas: React.FC =  ()=>{
     const [searchParams, setSearchParams] = useSearchParams();
+    const {debounce} = useDebounce(1000, false);
+
+    const busca = useMemo(()=>{
+        return searchParams.get('busca') || '';
+    },[searchParams]);
 
     useEffect(()=>{
-        PessoasService.getAll(1, busca)
+        debounce(()=>{
+            PessoasService.getAll(1, busca)
             .then((result)=>{
                 if (result instanceof Error){
                     alert(result.message);
@@ -17,11 +24,9 @@ export const ListagemDePessoas: React.FC =  ()=>{
                 }
                 console.log(result);
             })
-    }, []);
-
-    const busca = useMemo(()=>{
-        return searchParams.get('busca') || '';
-    },[searchParams]);
+        });
+        
+    }, [busca]);
 
     return (
         <LayoutBaseDePagina
